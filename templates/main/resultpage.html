@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Coventry Scholars: Home</title>
+{% endblock %}
+
+{% block content %}
+    <section class="container">
+        <div class="col-md-4 mt-5">
+            <form class="input-group gap-3">
+                <input type="text" value="{{query}}" name="query" class="form-control" method="get" action="/result"/>
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="container search-result mt-3" id="result">
+        {% if result|length == 0 %}
+            <h5>Sorry, No Result Found!</h5>
+        {% endif %}
+        <ul class="list">
+            {% for paper in result %}    
+                <li>
+                    <span>(Score: {{ paper.score }} )</span>
+                    <h6><a href="{{paper.link}}" target="_blank">{{paper.title}}</a></h6>
+                    <p><span>{{paper.published_date}}</span>
+                        {% for author in paper.authors %}
+                        <span>
+                            {% if author.profile_link != None %}
+                                ,<a href="{{author.profile_link}}" target="_blank"><span>{{author.name}}</span></a>
+                            {% else %}
+                                ,<span>{{author.name}}</span>
+                            {% endif%}
+                        </span>
+                        {% endfor %}
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul class="pagination"></ul>
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+    <script>
+        var options = {
+            page: 5,
+            pagination: true
+        };
+        var hackerList = new List('result', options);
+    </script>
+{% endblock %}

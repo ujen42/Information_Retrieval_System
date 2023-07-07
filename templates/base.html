@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} {% endblock %}
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+    {% block css %}
+    
+    {% endblock %}
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Top Bar-->
+        <header class="top-nav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-lfight border-bottom border-primary">
+                <div class="container">
+                    <div class="d-flex d-none d-sm-none  d-md-none d-lg-block">
+                        <a class="navbar-brand fw-bold" href="#">Coventry Scholars</a>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <img class="w-50" src="{{ url_for('static', filename='images/logo.png') }}" alt="logo" />
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- Main Body -->
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light mt-auto">
+        <div class="container py-3">
+            <p class="text-center">
+               
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    </script>
+    {% block js %}
+    {% endblock %}
+</body>
+
+</html>

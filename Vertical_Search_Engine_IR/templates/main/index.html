@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Coventry Scholars: Home</title>
+{% endblock %}
+
+{% block content %}
+    <section class="container-fluid">
+        <div class="col-md-6 mx-auto mt-5">
+            <h2 class="fw-bold">Coventry Scholar</h2>
+            <form class="input-group gap-3 mt-5" method="post" action="/">
+                <input type="text" name='query' class="form-control form-control-lg" placeholder="Search Papers ...">
+                <button class="btn btn-lg btn-primary" type="submit">Search</button>
+            </form>
+            <footer class="footer">
+                <p class="footer-text">Created by Ujen Kumar Bajracharya</p>
+                <p class="footer-text">Module: Information Retrieval System</p>
+            </footer>
+        </div>
+    </section>
+{% endblock %}
